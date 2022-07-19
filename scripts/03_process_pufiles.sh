@@ -43,7 +43,7 @@ for reg in $(seq -f "%02g" 1 12); do
         echo "generating data for region $reg...";
         cat $PREPARED_DIR/r${reg}_events.csv \
             | awk -F, -v DATE=$DATE -v REG=$reg 'BEGIN{}{
-                print "SET "DATE"_R"REG"_EVENTS "$1" FIELD rsrp "$6" FIELD c1 "$8" FIELD c2 "$7" POINT "$3" "$2; 
+                print "SET "DATE"_R"REG"_EVENTS "$1" FIELD rsrp "$6" FIELD clat "$8" FIELD clng "$7" POINT "$3" "$2; 
             }' \
             > $IMPORTS/tile38_r${reg}_events.txt;
 

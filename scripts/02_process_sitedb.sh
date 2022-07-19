@@ -90,7 +90,7 @@ zcat $FILENAME \
     {
         if ($9 != "\\N" && $10 != "\\N") {
             split($21, arr, " ");
-            sitePos[$2] = $9" "$10
+            sitePos[$2] = $10" "$9
             reg[$2]=arr[2]
         }
     }

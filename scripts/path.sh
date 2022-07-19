@@ -1,4 +1,4 @@
-IMPORTS="/home/tsel/workspace/scripts/today-imports"
+IMPORTS="/home/tsel/data/today-imports"
 SITEDB_RAW="/home/tsel/data/today-sitedb"
 PUFILES_RAW="/home/tsel/data/today-pufiles"
 PREPARED_DIR="/home/tsel/data/today-prepared"
