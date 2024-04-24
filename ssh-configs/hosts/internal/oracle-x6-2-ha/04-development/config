@@ -1,0 +1,29 @@
+Host lab-native
+    User aprksy
+    Hostname 10.0.1.21
+    PreferredAuthentications publickey
+    IdentityFile /home/aprksy/.ssh/aprksy
+
+Host lab-node
+    User aprksy
+    Hostname 10.0.1.22
+    PreferredAuthentications publickey
+    IdentityFile /home/aprksy/.ssh/aprksy
+
+Host lab-dotnet
+    User aprksy
+    Hostname 10.0.1.23
+    PreferredAuthentications publickey
+    IdentityFile /home/aprksy/.ssh/aprksy
+
+Host lab-java
+    User aprksy
+    Hostname 10.0.1.24
+    PreferredAuthentications publickey
+    IdentityFile /home/aprksy/.ssh/aprksy
+
+Host lab-erlang
+    User aprksy
+    Hostname 10.0.1.25
+    PreferredAuthentications publickey
+    IdentityFile /home/aprksy/.ssh/aprksy

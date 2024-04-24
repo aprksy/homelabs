@@ -1,0 +1,18 @@
+Host base-arch
+    User aprksy
+    Hostname 10.0.1.240
+    Port 22
+    IdentityFile /home/aprksy/.ssh/aprksy
+
+Host base-alpine
+    User aprksy
+    Hostname 10.0.1.241
+    Port 22
+    IdentityFile /home/aprksy/.ssh/aprksy
+
+Host base-debian
+    User aprksy
+    Hostname 10.0.1.242
+    Port 22
+    IdentityFile /home/aprksy/.ssh/aprksy
+

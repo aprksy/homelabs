@@ -1,0 +1,12 @@
+Host srv-idosm
+    User aprksy
+    Hostname 10.0.1.10
+    Port 22
+    IdentityFile /home/aprksy/.ssh/aprksy
+
+Host srv-sonarqube
+    User aprksy
+    Hostname 10.0.1.11
+    Port 22
+    IdentityFile /home/aprksy/.ssh/aprksy
+
