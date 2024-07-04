@@ -1,3 +1,0 @@
-mkdir -p .config && \
-  cp ~/.tmux.conf . && \
-  cp -r ~/.config/{alacritty,hypr,waybar,sway} .config/

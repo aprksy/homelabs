@@ -1,6 +1,0 @@
-Include /home/aprksy/.ssh/hosts/internal/oracle-x6-2-ha/config
-Include /home/aprksy/.ssh/hosts/internal/oracle-x6-2-ha/01-base-container/config
-Include /home/aprksy/.ssh/hosts/internal/oracle-x6-2-ha/02-server/config
-Include /home/aprksy/.ssh/hosts/internal/oracle-x6-2-ha/03-notebook/config
-Include /home/aprksy/.ssh/hosts/internal/oracle-x6-2-ha/04-development/config
-Include /home/aprksy/.ssh/hosts/external/config

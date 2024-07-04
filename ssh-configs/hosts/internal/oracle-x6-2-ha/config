@@ -1,6 +1,0 @@
-Host oracle_x6-2
-    User aprksy
-    Hostname 10.0.1.1
-    PreferredAuthentications publickey
-    IdentityFile /home/aprksy/.ssh/aprksy
-    
