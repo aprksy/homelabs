@@ -1,0 +1,2 @@
+HOSTUSER="aprksy"
+INCUS_BASE_IP="192.168.200"

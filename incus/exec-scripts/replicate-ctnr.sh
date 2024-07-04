@@ -14,7 +14,7 @@
 
 CONTAINER_TEMPLATE=$1
 CONTAINER_TARGET=$2
-IPADDR=$3
+CONTAINER_IPADDR=$3
 
 # validate input
 if [ -z $CONTAINER_TEMPLATE ]
@@ -29,11 +29,14 @@ then
     exit 1 
 fi
 
-if [ -z $IPADDR ]
+if [ -z $CONTAINER_IPADDR ]
 then
     echo "ERR: ip address last byte cannot be empty"
     exit 1 
 fi
+
+# load base
+source base.sh
 
 # copy template container
 incus cp $CONTAINER_TEMPLATE $CONTAINER_TARGET && \
@@ -44,8 +47,8 @@ incus start $CONTAINER_TARGET && \
 echo "starting '$CONTAINER_TARGET' container [OK]" \
 
 # replace ip address
-incus exec $CONTAINER_TARGET -- sed -i s/3/$IPADDR/g /etc/systemd/network/eth0.network && \
-echo "change ip addres to '192.168.200.$IPADDR' on '$CONTAINER_TARGET' [OK]" \
+incus exec $CONTAINER_TARGET -- sed -i s/3/$CONTAINER_IPADDR/g /etc/systemd/network/eth0.network && \
+echo "change ip addres to '${INCUS_BASE_IP}.$CONTAINER_IPADDR' on '$CONTAINER_TARGET' [OK]" \
 
 # remove all host's ssh keys
 incus exec $CONTAINER_TARGET -- sh -c "rm /etc/ssh/ssh_host*" && \

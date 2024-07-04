@@ -11,7 +11,7 @@
 # - add the container into ssh node in the ssh config file along with the user name (provided by user), ip address and key
 
 CONTAINER_TARGET=$1
-USERNAME=$2
+CONTAINER_USERNAME=$2
 KEYNAME=$3
 
 # validate input
@@ -21,7 +21,7 @@ then
     exit 1
 fi
 
-if [ -z $USERNAME ]
+if [ -z $CONTAINER_USERNAME ]
 then
     echo "username container cannot be empty"
     exit 1
@@ -33,15 +33,20 @@ then
     exit 1
 fi
 
+# load base
+source base.sh
+
 # get ip address
-IPADDRESS=$(incus ls | grep $CONTAINER_TARGET | cut -d"|" -f4 | cut -d" " -f2)
+CONTAINER_IPADDRESS=$( { incus ls | grep $CONTAINER_TARGET | cut -d"|" -f4 | cut -d" " -f2; } 2>&1 )
+wait
+echo "retrieve container '$CONTAINER_TARGET' IP address ['$CONTAINER_IPADDRESS']"
 
 # inject ssh pub key into the container
-incus exec $CONTAINER_TARGET -- mkdir -p /home/$USERNAME/.ssh && \
+incus exec $CONTAINER_TARGET -- mkdir -p /home/$CONTAINER_USERNAME/.ssh && \
 echo "create ssh dir in the container [OK]" && \
-incus file push ~/.ssh/${KEYNAME}.pub $CONTAINER_TARGET/home/$USERNAME/.ssh/authorized_keys && \
+incus file push ~/.ssh/${KEYNAME}.pub $CONTAINER_TARGET/home/$CONTAINER_USERNAME/.ssh/authorized_keys && \
 echo "copy ssh pub key into the container [OK]" && \
-incus exec $CONTAINER_TARGET -- chmod 600 /home/$USERNAME/.ssh/authorized_keys && \
+incus exec $CONTAINER_TARGET -- chmod 600 /home/$CONTAINER_USERNAME/.ssh/authorized_keys && \
 echo "change permission to the ssh pub key in container to 600 [OK]" && \
 
 # restart ssh service
@@ -49,13 +54,13 @@ incus exec $CONTAINER_TARGET -- systemctl restart sshd
 echo "restarting sshd service in the container [OK]" && \
 
 # add the container info into host's ssh config file 
-SSHHOME="/home/aprksy/.ssh"
-SSHCONFIG="$SSHHOME/hosts/local/incus/container/config"
-echo "Host local-$CONTAINER_TARGET" >> $SSHCONFIG
-echo "    Hostname $IPADDRESS" >> $SSHCONFIG
-echo "    Port 22" >> $SSHCONFIG
-echo "    User $USERNAME" >> $SSHCONFIG
-echo "    IdentityFile $SSHHOME/$KEYNAME" >> $SSHCONFIG
-echo "" >> $SSHCONFIG
+SSH_DIR="/home/aprksy/.ssh"
+SSH_CONFIG="$SSH_DIR/hosts/local/incus/container/config"
+echo "Host local-$CONTAINER_TARGET" >> $SSH_CONFIG
+echo "    Hostname $CONTAINER_IPADDRESS" >> $SSH_CONFIG
+echo "    Port 22" >> $SSH_CONFIG
+echo "    User $CONTAINER_USERNAME" >> $SSH_CONFIG
+echo "    IdentityFile $SSH_DIR/$KEYNAME" >> $SSH_CONFIG
+echo "" >> $SSH_CONFIG
 
 echo "adding entry of the container in the host ssh config file [OK]"
