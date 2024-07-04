@@ -1,0 +1,10 @@
+# homelabs-config
+## Incus
+### Containers
+#### exec-scripts
+- `base.sh`
+- `init-ctnr.sh`
+- `replicate-ctnr.sh`
+- `add-sshnode.sh`
+- `install-apps.sh`
+### VMs
