@@ -55,7 +55,7 @@ echo "restarting sshd service in the container [OK]" && \
 
 # add the container info into host's ssh config file 
 SSH_DIR="/home/aprksy/.ssh"
-SSH_CONFIG="$SSH_DIR/hosts/local/incus/container/config"
+SSH_CONFIG="$SSH_DIR/hosts/local.incus.ctnr.config"
 echo "Host local-$CONTAINER_TARGET" >> $SSH_CONFIG
 echo "    Hostname $CONTAINER_IPADDRESS" >> $SSH_CONFIG
 echo "    Port 22" >> $SSH_CONFIG

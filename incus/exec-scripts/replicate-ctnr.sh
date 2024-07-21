@@ -47,7 +47,7 @@ incus start $CONTAINER_TARGET && \
 echo "starting '$CONTAINER_TARGET' container [OK]" \
 
 # replace ip address
-incus exec $CONTAINER_TARGET -- sed -i s/3/$CONTAINER_IPADDR/g /etc/systemd/network/eth0.network && \
+incus exec $CONTAINER_TARGET -- sed -i s/1.1/$CONTAINER_IPADDR/g /etc/systemd/network/eth0.network && \
 echo "change ip addres to '${INCUS_BASE_IP}.$CONTAINER_IPADDR' on '$CONTAINER_TARGET' [OK]" \
 
 # remove all host's ssh keys
