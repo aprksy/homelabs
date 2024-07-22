@@ -12,4 +12,4 @@ APPS=$6
 # wait 5 seconds until container obtains IP address from configuration
 sleep 5s
 ./add-sshnode.sh $CONTAINER_TARGET $CONTAINER_USERNAME $KEYNAME
-./install-apps.sh $CONTAINER_TARGET $APPS
+./install-apps.sh $CONTAINER_TARGET "$APPS"
